@@ -41,7 +41,7 @@ const CountriesSearch = () => {
             </div>
             <div className='Container'>
                 {countries.map((items) =>
-                    <div className='Card' key={items.cca3} >
+                    <div className='countryCard' key={items.cca3} >
                         <img className='CardItem' src={items.flags.png} alt={items.flags.alt} />
                         <h3>{items.name.common}</h3>
                     </div>
