@@ -5,13 +5,14 @@ const CountriesSearch = () => {
     const [countries, setCountries] = useState([]);
     const [filteredCountries, setFilteredCountries] = useState([]);
     const [search, setSearch] = useState("");
+    const url = 'https://restcountries.com/v3.1/all';
 
     useEffect(() => {
         fetchCountries();
     }, []);
 
     const fetchCountries = () => {
-        fetch("https://restcountries.com/v3.1/all")
+        fetch(url)
             .then((response) => response.json())
             .then((data) => { setCountries(data); setFilteredCountries(data); })
             .catch((error) => console.log(error));
