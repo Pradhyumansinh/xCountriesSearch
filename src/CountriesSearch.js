@@ -21,7 +21,7 @@ const CountriesSearch = () => {
     const handleSearch = (e) => {
         const searchCountry = e.target.value;
         setSearch(searchCountry);
-        const result = filteredCountries.filter((country) => country.name.common.includes(searchCountry));
+        const result = filteredCountries.filter((country) => country.name.common.toLowerCase().includes(searchCountry.toLowerCase()));
         setCountries(result);
     };
 
