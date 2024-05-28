@@ -18,16 +18,16 @@ const CountriesSearch = () => {
     };
 
     const handleSearch = (e) => {
-        const searchCountry = e.target.value.toLowerCase();
+        const searchCountry = e.target.value;
         setSearch(searchCountry);
-        const result = filteredCountries.filter((country) => country.name.common.toLowerCase().includes(searchCountry));
+        const result = filteredCountries.filter((country) => country.name.common.includes(searchCountry));
         setCountries(result);
     };
 
     return (
         <div>
             <div className='header'>
-                <input type='text' onChange={handleSearch} value={search} placeholder='Search for countries...' />
+                <input type='text' onChange={handleSearch} value={search} placeholder='Search for Countries...' />
             </div>
             <div className='Container'>
                 {countries.map((items) =>
