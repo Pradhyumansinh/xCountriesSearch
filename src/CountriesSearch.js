@@ -8,21 +8,17 @@ const CountriesSearch = () => {
     const url = 'https://restcountries.com/v3.1/all';
 
     useEffect(() => {
-        fetchCountries();
-    }, []);
-
-    const fetchCountries = () => {
         fetch(url)
             .then((response) => response.json())
             .then((data) => { setCountries(data); setFilteredCountries(data); })
-            .catch((error) => console.log(error));
-    };
+            .catch((error) => console.log("Data not fetched"));
+    }, []);
 
     const handleSearch = (e) => {
         const searchCountry = e.target.value;
         setSearch(searchCountry);
-        const result = filteredCountries.filter((country) => country.name.common.toLowerCase().includes(searchCountry.toLowerCase()));
-        setCountries(result);
+        const result = countries.filter((country) => country.name.common.toLowerCase().includes(searchCountry.toLowerCase()));
+        setFilteredCountries(result);
     };
 
     return (
@@ -31,10 +27,10 @@ const CountriesSearch = () => {
                 <input type='text' onChange={handleSearch} value={search} placeholder='Search for Countries...' />
             </div>
             <div className='Container'>
-                {countries.map((items) =>
+                {filteredCountries.map((items) =>
                     <div className='countryCard' key={items.cca3} >
                         <img className='CardItem' src={items.flags.png} alt={items.flags.alt} />
-                        <h3>{items.name.common}</h3>
+                        <h2>{items.name.common}</h2>
                     </div>
                 )}
             </div>
