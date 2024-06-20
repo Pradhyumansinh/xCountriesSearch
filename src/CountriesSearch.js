@@ -5,7 +5,7 @@ const Tiles = ({ name, flag, altFlag }) => {
     return (
         <div className='countryCard' >
             <img className='CardItem' src={flag} alt={altFlag} />
-            <h3>{name}</h3>
+            <h2>{name}</h2>
         </div>
     )
 }
