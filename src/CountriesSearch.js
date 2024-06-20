@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react';
 import './CountriesSearch.css';
 
+const Tiles = ({ name, flag, altFlag }) => {
+    return (
+        <div className='countryCard' >
+            <img className='CardItem' src={flag} alt={altFlag} />
+            <h3>{name}</h3>
+        </div>
+    )
+}
+
 const CountriesSearch = () => {
     const [countries, setCountries] = useState([]);
     const [filteredCountries, setFilteredCountries] = useState([]);
@@ -28,10 +37,7 @@ const CountriesSearch = () => {
             </div>
             <div className='Container'>
                 {filteredCountries.map((items) =>
-                    <div className='countryCard' key={items.cca3} >
-                        <img className='CardItem' src={items.flags.png} alt={items.flags.alt} />
-                        <h2>{items.name.common}</h2>
-                    </div>
+                    <Tiles key={items.cca3} name={items.name.common} flag={items.flags.png} altFlag={items.flags.alt} />
                 )}
             </div>
         </div>
